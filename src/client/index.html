@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <h1>FSB Group Chat</h1>
+
+    <span>Example app with websockets</span>
+
+    <button onclick="emitMessage()">
+        Send message
+    </button>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/3.0.1/socket.io.js"></script>
+    <script>
+        let socket = io("http://localhost:3000");
+        
+        function emitMessage() {
+            socket.emit('message', 'Holaaa!!!');
+        }
+    </script>
+</body>
+
+</html>
