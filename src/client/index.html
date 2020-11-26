@@ -12,7 +12,11 @@
     <h1>FSB Group Chat</h1>
 
     <span>Example app with websockets</span>
+    <div id="panel">
 
+    </div>
+
+    <input id="input" type="text">
     <button onclick="emitMessage()">
         Send message
     </button>
@@ -20,9 +24,21 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/3.0.1/socket.io.js"></script>
     <script>
         let socket = io("http://localhost:3000");
-        
+
+        socket.on('message', (message) => {
+            console.log(message);
+            var div = document.getElementById('panel');
+
+            div.innerHTML += `<p>${message}</p>`;
+        });
+
         function emitMessage() {
-            socket.emit('message', 'Holaaa!!!');
+
+            const myMessage = document.getElementById("input").value;
+            socket.emit('message', myMessage);
+            var div = document.getElementById('panel');
+
+            div.innerHTML += `<p>${myMessage}</p>`;
         }
     </script>
 </body>
