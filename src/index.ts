@@ -46,6 +46,7 @@ io.on('connection', function(socket: any){
 
     socket.on('message', (message: any)=>{
         console.log(message);
-        socket.broadcast.emit('message', message);
+        // socket.broadcast.emit('message', message);
+        io.emit('message', message);
     })
 });
